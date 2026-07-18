@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0b1c2c;
+  --navy-soft: #132a3e;
+  --teal: #1fa6a0;
+  --sand: #e8d5b5;
+  --cream: #f7f5f1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-navy font-sans antialiased;
+}
+
+::selection {
+  @apply bg-teal/30 text-navy;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
