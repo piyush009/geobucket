@@ -31,13 +31,13 @@ export function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">
             {site.tagline}
           </p>
-          <p className="mt-4 text-sm text-cream/50">{site.address}</p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-2 inline-block text-sm text-teal-light hover:underline"
-          >
-            {site.email}
-          </a>
+          <p className="mt-4 text-sm leading-relaxed text-cream/50">
+            {site.addressLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </p>
         </div>
 
         <div>

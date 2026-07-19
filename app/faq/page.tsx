@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Where are you based?",
-    a: "We operate across San Francisco, Bengaluru, and remote-first squads.",
+    a: "We are based in Patna, Bihar, with remote-first delivery squads.",
   },
   {
     q: "How do engagements start?",
