@@ -27,7 +27,7 @@ export function Footer() {
 
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
-          <Logo light />
+          <Logo light variant="full" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">
             {site.tagline}
           </p>

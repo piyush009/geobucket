@@ -33,7 +33,7 @@ export function Header() {
           : "bg-cream/80 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-site items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+      <div className="mx-auto flex max-w-site items-center justify-between gap-4 px-5 py-2.5 sm:px-8 sm:py-3">
         <Logo />
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
