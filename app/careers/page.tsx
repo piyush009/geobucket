@@ -4,7 +4,6 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -20,7 +19,7 @@ export default function CareersPage() {
         subtitle={careers.culture}
       >
         <div className="mt-8">
-          <Button href={`mailto:${site.email}?subject=Careers`} variant="secondary">
+          <Button href="/contact" variant="secondary">
             See open roles
           </Button>
         </div>
@@ -37,11 +36,7 @@ export default function CareersPage() {
                     {role.location} · {role.type}
                   </p>
                 </div>
-                <Button
-                  href={`mailto:${site.email}?subject=Application: ${role.title}`}
-                  variant="secondary"
-                  className="!text-xs"
-                >
+                <Button href="/contact" variant="secondary" className="!text-xs">
                   Apply
                 </Button>
               </div>
@@ -49,9 +44,9 @@ export default function CareersPage() {
           ))}
         </div>
         <p className="mt-8 text-sm text-navy/55">
-          Don&apos;t see a fit? Write to{" "}
-          <a href={`mailto:${site.email}`} className="text-teal hover:underline">
-            {site.email}
+          Don&apos;t see a fit?{" "}
+          <a href="/contact" className="text-teal hover:underline">
+            Reach out via our contact form
           </a>{" "}
           with your story.
         </p>

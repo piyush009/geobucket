@@ -7,7 +7,6 @@ export const site = {
   url: "https://www.geobucket.in",
   /** Inbox for form submissions and mailto destinations (not shown on Contact). */
   email: "piyush.tiwary@geobucket.in",
-  phone: "+1 (415) 555-0142",
   addressLines: [
     "House No. 33, GEOBUCKET SOLUTIONS PRIVATE LIMITED",
     "Road No. 1A, LBS Nagar, Behind A.N. College",

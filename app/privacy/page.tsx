@@ -29,9 +29,9 @@ export default function PrivacyPage() {
             for correspondence and legitimate business records.
           </p>
           <p>
-            For privacy requests, email{" "}
-            <a href={`mailto:${site.email}`} className="text-teal hover:underline">
-              {site.email}
+            For privacy requests, use our{" "}
+            <a href="/contact" className="text-teal hover:underline">
+              contact form
             </a>
             .
           </p>
