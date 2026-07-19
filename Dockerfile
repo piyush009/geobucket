@@ -12,6 +12,8 @@ FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+# Cap Node heap so builds survive small EC2 instances (e.g. t2/t3.micro).
+ENV NODE_OPTIONS="--max-old-space-size=1536"
 RUN npm run build
 
 FROM base AS runner
