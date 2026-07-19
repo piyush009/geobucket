@@ -14,3 +14,8 @@ README.md
 .idea
 coverage
 .DS_Store
+logo.jpeg
+public/logo.svg
+*.pem
+.cursor
+agent-transcripts

@@ -1,22 +1,33 @@
-# syntax=docker/dockerfile:1
+# Lean multi-stage build for small EC2 disks.
+# Stage 1 builds the app, then deletes node_modules before the layer is kept.
+# Stage 2 copies only the Next.js standalone output (no npm install in runtime).
 
-FROM node:24-alpine AS base
+FROM node:24-alpine AS builder
 WORKDIR /app
 
-FROM base AS deps
 RUN apk add --no-cache libc6-compat
+
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --no-audit --no-fund \
+  && npm cache clean --force
 
-FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
-# Cap Node heap so builds survive small EC2 instances (e.g. t2/t3.micro).
-ENV NODE_OPTIONS="--max-old-space-size=1536"
-RUN npm run build
 
-FROM base AS runner
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+# Keep heap modest on ~1GB RAM instances (use swap if needed).
+ENV NODE_OPTIONS="--max-old-space-size=768"
+
+RUN npm run build \
+  && rm -rf node_modules \
+  && rm -rf .next/cache \
+  && rm -rf /tmp/* \
+  && rm -rf /root/.npm
+
+# --- production image (tiny) ---
+FROM node:24-alpine AS runner
+WORKDIR /app
+
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
