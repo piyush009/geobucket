@@ -33,10 +33,10 @@ export function Header() {
           : "bg-cream/80 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-site items-center justify-between gap-4 px-5 py-2.5 sm:px-8 sm:py-3">
+      <div className="mx-auto flex max-w-site items-center justify-between gap-3 px-4 py-2 sm:gap-4 sm:px-8 sm:py-2.5">
         <Logo />
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Main">
           {mainNav.map((item) => (
             <div
               key={item.href}
@@ -82,7 +82,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Button href="/contact" className="!py-2 !text-xs uppercase tracking-wider">
             Connect
           </Button>
@@ -90,7 +90,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy/15 text-navy lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy/15 text-navy xl:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -111,7 +111,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-navy/10 bg-cream lg:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-navy/10 bg-cream xl:hidden">
           <nav className="flex flex-col gap-1 px-5 py-4" aria-label="Mobile">
             {mainNav.map((item) => (
               <div key={item.href} className="border-b border-navy/5 py-2">

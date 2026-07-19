@@ -4,7 +4,7 @@ import Link from "next/link";
 type LogoProps = {
   className?: string;
   light?: boolean;
-  /** nav = compact cropped mark+wordmark; full = entire brand sheet */
+  /** nav = large left wordmark; full = entire banner */
   variant?: "nav" | "full";
 };
 
@@ -17,38 +17,36 @@ export function Logo({
     return (
       <Link
         href="/"
-        className={`group inline-flex items-center ${className}`}
+        className={`group inline-flex max-w-full items-center ${className}`}
         aria-label="GeoBucket home"
       >
         <Image
           src="/logo.jpeg"
           alt="GeoBucket — Intelligent Solutions. Infinite Possibilities."
-          width={480}
-          height={520}
-          className={`h-auto w-56 object-contain sm:w-64 ${light ? "brightness-110" : ""}`}
-          sizes="(max-width: 640px) 224px, 256px"
+          width={960}
+          height={280}
+          className={`h-auto w-full max-w-md object-contain object-left ${light ? "brightness-110" : ""}`}
+          sizes="(max-width: 640px) 90vw, 448px"
         />
       </Link>
     );
   }
 
-  // Crop to the upper mark + GEOBUCKET wordmark so text stays readable in the header.
+  // Wide banner: zoom into the left G + GEOBUCKET wordmark so the name stays readable.
   return (
     <Link
       href="/"
       className={`group inline-flex shrink-0 items-center ${className}`}
       aria-label="GeoBucket home"
     >
-      <span
-        className={`relative block h-14 w-[11.5rem] overflow-hidden rounded-md bg-cream sm:h-16 sm:w-[14rem] md:h-[4.75rem] md:w-[17rem] ${light ? "bg-transparent" : ""}`}
-      >
+      <span className="relative block h-16 w-[15.5rem] overflow-hidden sm:h-[4.75rem] sm:w-[20rem] md:h-20 md:w-[24rem] lg:h-[5.25rem] lg:w-[28rem]">
         <Image
           src="/logo.jpeg"
           alt="GeoBucket — Intelligent Solutions. Infinite Possibilities."
           fill
           priority
-          sizes="(max-width: 640px) 184px, (max-width: 768px) 224px, 272px"
-          className={`object-cover object-[center_8%] ${light ? "brightness-110" : ""}`}
+          sizes="(max-width: 640px) 248px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 448px"
+          className={`object-cover object-left ${light ? "brightness-110" : ""}`}
         />
       </span>
     </Link>
