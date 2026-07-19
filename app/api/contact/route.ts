@@ -203,10 +203,23 @@ export async function POST(request: Request) {
     const detail = err instanceof Error ? err.message : String(err);
     console.error("[contact] send failed:", detail);
 
-    // SMTP often fails from AWS → try logging a clearer hint
+    const authFailed = /535|Invalid login|Authentication Failed|EAUTH/i.test(
+      detail,
+    );
+
+    if (authFailed) {
+      return NextResponse.json(
+        {
+          error:
+            "Email server rejected the login. Update SMTP credentials on the server.",
+        },
+        { status: 502 },
+      );
+    }
+
     if (!hasResend && hasSmtp) {
       console.error(
-        "[contact] Tip: GoDaddy SMTP is often blocked from EC2. Use RESEND_API_KEY or SMTP port 587.",
+        "[contact] Tip: GoDaddy SMTP auth often fails from EC2. Prefer RESEND_API_KEY.",
       );
     }
 
