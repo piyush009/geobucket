@@ -15,8 +15,8 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
-# Keep heap modest on ~1GB RAM instances (use swap if needed).
-ENV NODE_OPTIONS="--max-old-space-size=768"
+# Needs headroom for `next build` / trace collection (pair with 2GB swap on micro instances).
+ENV NODE_OPTIONS="--max-old-space-size=1536"
 
 RUN npm run build \
   && rm -rf node_modules \
